@@ -216,17 +216,17 @@ export default Vue.extend({
       { text: '', value: 'reply', width: '10%' },
       { text: '', value: 'actions', width: '10%' }
     ],
-    questionList: [],
+    questionList: [{id: 0, question: '', answer: ['']}],
     newAnswer: '',
     newQuestion: '',
     questionId: null,
     questionRules: [
-      value => !!value || 'This field is required.',
-      value => value.length <= 150 || 'Max 150 characters'
+      (value: any) => !!value || 'This field is required.',
+      (value: any) => value.length <= 150 || 'Max 150 characters'
     ],
     answerRules: [
-      value => !!value || 'This field is required.',
-      value => value.length <= 550 || 'Max 550 characters'
+      (value: any) => !!value || 'This field is required.',
+      (value: any) => value.length <= 550 || 'Max 550 characters'
     ]
   }),
 
@@ -252,9 +252,9 @@ export default Vue.extend({
         this.isLoggedIn = false
       }
       if (localStorage.getItem('question_list') === null) {
-        this.questionList = []
+        this.questionList = [{id: 0, question: '', answer: ['']}]
       } else {
-        this.questionList = JSON.parse(localStorage.getItem('question_list'))
+        this.questionList = JSON.parse(localStorage.getItem('question_list') || '[]')
       }
     },
 
@@ -273,7 +273,7 @@ export default Vue.extend({
     },
 
     saveReply () {
-      this.questionList.forEach(item => {
+      this.questionList.forEach((item: any) => {
         if (item.id === this.questionId) {
           item.answer.push(this.newAnswer)
         }
@@ -298,7 +298,12 @@ export default Vue.extend({
     },
 
     save () {
-      this.questionList.push({ id: this.questionList.length + 1, question: this.newQuestion, answer: [] })
+      var ques = {
+        id: this.questionList.length + 1,
+        question: this.newQuestion,
+        answer: []
+      }
+      this.questionList.push(ques)
       localStorage.setItem('question_list', JSON.stringify(this.questionList))
       this.newQuestion = ''
       this.snackbarText = 'Successfully saved'

@@ -72,8 +72,8 @@ export default Vue.extend({
     initialize () {
       this.questionId = parseInt(this.$route.params.id)
       if (localStorage.getItem('question_list') !== null) {
-        var questionList = JSON.parse(localStorage.getItem('question_list'))
-        questionList.forEach(item => {
+        var questionList = JSON.parse(localStorage.getItem('question_list') || '[]')
+        questionList.forEach((item: any) => {
           if (item.id === this.questionId) {
             this.question = item.question
             this.answers = item.answer

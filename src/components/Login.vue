@@ -55,16 +55,16 @@ export default Vue.extend({
     minPasswordChar: 6,
     maxPasswordChar: 20,
     emailRules: [
-      v => /.+@.+\..+/.test(v) || 'E-mail must be valid'
+      (v: any) => /.+@.+\..+/.test(v) || 'E-mail must be valid'
     ],
     passwordRules: {
-      required: v => !!v || 'Required.',
-      min: v => (v || '').length >= 6 || ' Minimum 6 characters',
-      max: v => (v || '').length <= 20 || ' Maximum 20 characters',
-      upperCase: v => (/[a-z]+/).test(v || '') || 'At least one lowercase letter required.',
-      lowerCase: v => (/[A-Z]+/).test(v || '') || 'At least one uppercase letter required.',
-      number: v => (/[0-9]+/).test(v || '') || 'At least one number required.',
-      specialChar: v => !(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/).test(v || '') || 'No special characters allowed'
+      required: (v: any) => !!v || 'Required.',
+      min: (v: any) => (v || '').length >= 6 || ' Minimum 6 characters',
+      max: (v: any) => (v || '').length <= 20 || ' Maximum 20 characters',
+      upperCase: (v: any) => (/[a-z]+/).test(v || '') || 'At least one lowercase letter required.',
+      lowerCase: (v: any) => (/[A-Z]+/).test(v || '') || 'At least one uppercase letter required.',
+      number: (v: any) => (/[0-9]+/).test(v || '') || 'At least one number required.',
+      specialChar: (v: any) => !(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/).test(v || '') || 'No special characters allowed'
     }
   }),
 

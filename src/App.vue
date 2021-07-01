@@ -47,7 +47,7 @@ export default Vue.extend({
     drawer: false,
     group: null,
     isLoggedIn: false,
-    items: []
+    items: [{}]
   }),
   watch: {
     group () {
@@ -80,7 +80,7 @@ export default Vue.extend({
         ]
       }
     },
-    onNavItemClicked (item) {
+    onNavItemClicked (item: any) {
       if (item.title === 'All questions' || item.title === 'Dashboard') {
         this.$router.push('/question-list')
       }
