@@ -88,10 +88,10 @@
                 </v-dialog>
               </v-toolbar>
             </template>
-            <template v-slot:item.count="{item}">
+            <template v-slot:item.count="{ item }">
                   {{ item.answer.length }}
             </template>
-            <template v-slot:item.reply="{item}">
+            <template v-slot:item.reply="{ item }">
                   <v-btn
                     text
                     v-if="isLoggedIn === true"
@@ -101,7 +101,7 @@
                     Reply
                   </v-btn>
             </template>
-            <template v-slot:item.actions="{item}">
+            <template v-slot:item.actions="{ item }">
                   <v-btn
                     text
                     color="primary"
@@ -216,7 +216,7 @@ export default Vue.extend({
       { text: '', value: 'reply', width: '10%' },
       { text: '', value: 'actions', width: '10%' }
     ],
-    questionList: [{id: 0, question: '', answer: ['']}],
+    questionList: [{ id: 0, question: '', answer: [''] }],
     newAnswer: '',
     newQuestion: '',
     questionId: null,
@@ -252,7 +252,7 @@ export default Vue.extend({
         this.isLoggedIn = false
       }
       if (localStorage.getItem('question_list') === null) {
-        this.questionList = [{id: 0, question: '', answer: ['']}]
+        this.questionList = [{ id: 0, question: '', answer: [''] }]
       } else {
         this.questionList = JSON.parse(localStorage.getItem('question_list') || '[]')
       }

@@ -25,7 +25,7 @@
             <v-expansion-panel
               v-for="(answer, i) in answers" :key="i"
             >
-              <v-expansion-panel-header>{{ answer.substring(0, 50) + ' . . .'}}</v-expansion-panel-header>
+              <v-expansion-panel-header>{{ answer.substring(0, 50) + ' . . .' }}</v-expansion-panel-header>
               <v-expansion-panel-content>
                 {{ answer }}
               </v-expansion-panel-content>

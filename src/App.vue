@@ -47,7 +47,7 @@ export default Vue.extend({
     drawer: false,
     group: null,
     isLoggedIn: false,
-    items: [{}]
+    items: [{ }]
   }),
   watch: {
     group () {
