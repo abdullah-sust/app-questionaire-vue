@@ -252,7 +252,7 @@ export default Vue.extend({
         this.isLoggedIn = false
       }
       if (localStorage.getItem('question_list') === null) {
-        this.questionList = [{ id: 0, question: '', answer: [''] }]
+        this.questionList = []
       } else {
         this.questionList = JSON.parse(localStorage.getItem('question_list') || '[]')
       }
