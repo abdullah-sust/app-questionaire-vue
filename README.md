@@ -16,6 +16,11 @@ Open terminal
 
 > npm run serve
 
+### Login credentials
+
+Email: example@questionaire.com
+
+Password: JoeB21
 
 ### Technology 
 
