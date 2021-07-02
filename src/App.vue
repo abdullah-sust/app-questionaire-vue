@@ -6,6 +6,11 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-spacer></v-spacer>
+
+      <v-btn v-if="isLoggedIn === true" icon>
+        <v-icon>mdi-account-circle</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-navigation-drawer
         class="primary accent-4"
@@ -69,7 +74,7 @@ export default Vue.extend({
         this.items = [
           { title: 'Dashboard', icon: 'mdi-view-dashboard' },
           { title: 'All questions', icon: 'mdi-clipboard-list' },
-          { title: 'My account', icon: 'mdi-account-box' },
+          // { title: 'My account', icon: 'mdi-account-circle' },
           { title: 'Logout', icon: 'mdi-arrow-left' }
         ]
       } else {
@@ -86,6 +91,7 @@ export default Vue.extend({
       }
       if (item.title === 'Logout') {
         localStorage.removeItem('isUserLoggedIn')
+        this.$router.push('/login')
         location.reload()
       }
       if (item.title === 'Login') {

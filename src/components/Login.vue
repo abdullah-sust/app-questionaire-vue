@@ -26,7 +26,7 @@
                                 v-model="user.password"
                                 :rules="[ passwordRules.required, passwordRules.min, passwordRules.max , passwordRules.upperCase , passwordRules.lowerCase, passwordRules.number, passwordRules.specialChar ]"
                             ></v-text-field>
-                            <label>Don't have an account? </label>
+                            <!-- <label>Don't have an account? </label> -->
                         </v-form>
                     </v-card-text>
                     <v-card-actions>
@@ -36,6 +36,25 @@
                 </v-card>
             </v-flex>
         </v-layout>
+    <v-snackbar
+      v-model="snackbar"
+      color="red"
+      bottom
+      right
+    >
+      {{ snackbarText }}
+
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="white"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
     </v-container>
 </template>
 
@@ -47,10 +66,12 @@ export default Vue.extend({
 
   data: () => ({
     user: {
-      email: null,
-      password: null
+      email: 'example@questionaire.com',
+      password: 'JoeB21'
     },
     valid: false,
+    snackbar: false,
+    snackbarText: '',
     showPassword: false,
     minPasswordChar: 6,
     maxPasswordChar: 20,
@@ -71,8 +92,14 @@ export default Vue.extend({
   methods: {
 
     onLoggedIn () {
-      localStorage.setItem('isUserLoggedIn', '1')
-      location.reload()
+      if (this.user.email === 'example@questionaire.com' && this.user.password === 'JoeB21') {
+        localStorage.setItem('isUserLoggedIn', '1')
+        location.reload()
+      } else {
+        this.snackbarText = 'Login failed!'
+        this.snackbar = true
+      }
+      // location.reload()
     }
   }
 })
