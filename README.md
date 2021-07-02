@@ -19,9 +19,11 @@ Open terminal
 
 ### Technology 
 
-JavaScript framework - Vue.js as 
+JavaScript framework - Vue.js 
 
 Design material - Vuetify
+
+Typescript Version - 4.1.6
 
 ### Description
 
